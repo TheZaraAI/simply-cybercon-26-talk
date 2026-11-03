@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(data/**)",
+      "Read(scripts/**)",
+      "Read(CLAUDE.md)",
+      "Write(output/**)",
+      "Edit(output/**)",
+      "Bash(python3 scripts/match.py:*)",
+      "Bash(python3 scripts/verify_brief.py:*)"
+    ],
+    "deny": [
+      "WebFetch",
+      "WebSearch",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "Bash(git push:*)",
+      "Bash(rm:*)",
+      "Read(./.env)",
+      "Read(~/.ssh/**)",
+      "Read(~/.aws/**)",
+      "Write(//**)"
+    ]
+  }
+}

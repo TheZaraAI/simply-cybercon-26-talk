@@ -1,0 +1,113 @@
+{
+  "title": "CISA Catalog of Known Exploited Vulnerabilities",
+  "catalogVersion": "2026.11.02",
+  "dateReleased": "2026-11-02T13:00:00.0000Z",
+  "count": 8,
+  "_note": "SAMPLE for offline testing. Run scripts/fetch_feed.py --live on a machine with internet to replace this with the real catalog.",
+  "vulnerabilities": [
+    {
+      "cveID": "CVE-2026-109618",
+      "vendorProject": "PHP Group",
+      "product": "PHP",
+      "vulnerabilityName": "PHP Deserialization Remote Code Execution Vulnerability",
+      "dateAdded": "2026-10-26",
+      "shortDescription": "PHP contains a deserialization flaw permitting unauthenticated remote code execution via a crafted request.",
+      "requiredAction": "Apply mitigations per vendor instructions or discontinue use of the product.",
+      "dueDate": "2026-10-29",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://www.php.net/security",
+      "cwes": ["CWE-502"]
+    },
+    {
+      "cveID": "CVE-2026-104411",
+      "vendorProject": "Ivanti",
+      "product": "Connect Secure",
+      "vulnerabilityName": "Ivanti Connect Secure Authentication Bypass Vulnerability",
+      "dateAdded": "2026-10-19",
+      "shortDescription": "An authentication bypass allows a remote attacker to access restricted resources without credentials.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-09",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://forums.ivanti.com/s/security-advisories",
+      "cwes": ["CWE-288"]
+    },
+    {
+      "cveID": "CVE-2026-100277",
+      "vendorProject": "Cisco",
+      "product": "IOS XE",
+      "vulnerabilityName": "Cisco IOS XE Web UI Privilege Escalation Vulnerability",
+      "dateAdded": "2026-10-30",
+      "shortDescription": "A flaw in the web management interface allows a remote attacker to create a privileged account.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-20",
+      "knownRansomwareCampaignUse": "Unknown",
+      "notes": "https://sec.cloudapps.cisco.com/security/center/publicationListing.x",
+      "cwes": ["CWE-269"]
+    },
+    {
+      "cveID": "CVE-2026-98004",
+      "vendorProject": "Atlassian",
+      "product": "Confluence",
+      "vulnerabilityName": "Atlassian Confluence Template Injection Vulnerability",
+      "dateAdded": "2026-09-14",
+      "shortDescription": "A template injection flaw permits remote code execution by an unauthenticated attacker.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-10-05",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://confluence.atlassian.com/security",
+      "cwes": ["CWE-1336"]
+    },
+    {
+      "cveID": "CVE-2026-91150",
+      "vendorProject": "Fortinet",
+      "product": "FortiOS",
+      "vulnerabilityName": "Fortinet FortiOS Out-of-Bounds Write Vulnerability",
+      "dateAdded": "2026-08-22",
+      "shortDescription": "An out-of-bounds write allows a remote unauthenticated attacker to execute arbitrary code via crafted requests.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-09-12",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://www.fortiguard.com/psirt",
+      "cwes": ["CWE-787"]
+    },
+    {
+      "cveID": "CVE-2026-88321",
+      "vendorProject": "Juniper",
+      "product": "Junos OS",
+      "vulnerabilityName": "Juniper Junos OS Missing Authentication Vulnerability",
+      "dateAdded": "2026-10-28",
+      "shortDescription": "Missing authentication for a critical function permits configuration changes by a remote attacker.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-18",
+      "knownRansomwareCampaignUse": "Unknown",
+      "notes": "https://supportportal.juniper.net",
+      "cwes": ["CWE-306"]
+    },
+    {
+      "cveID": "CVE-2026-77410",
+      "vendorProject": "Zoho",
+      "product": "ManageEngine ADSelfService Plus",
+      "vulnerabilityName": "Zoho ManageEngine Remote Code Execution Vulnerability",
+      "dateAdded": "2026-10-12",
+      "shortDescription": "A remote code execution flaw in the password self-service portal.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-11-02",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://www.manageengine.com/security",
+      "cwes": ["CWE-94"]
+    },
+    {
+      "cveID": "CVE-2026-70118",
+      "vendorProject": "Apache",
+      "product": "Struts",
+      "vulnerabilityName": "Apache Struts File Upload Path Traversal Vulnerability",
+      "dateAdded": "2026-07-30",
+      "shortDescription": "A path traversal flaw in file upload handling permits remote code execution.",
+      "requiredAction": "Apply mitigations per vendor instructions.",
+      "dueDate": "2026-08-20",
+      "knownRansomwareCampaignUse": "Known",
+      "notes": "https://struts.apache.org/announce",
+      "cwes": ["CWE-22"]
+    }
+  ]
+}

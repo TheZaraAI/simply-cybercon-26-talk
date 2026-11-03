@@ -1,0 +1,12 @@
+{
+  "_comment": "ACT 3 DEMO ONLY. This is the before state. No deny list, broad write access. Swap it in, run the poisoned feed, then swap it back. Never leave this in place.",
+  "permissions": {
+    "allow": [
+      "Read(**)",
+      "Write(**)",
+      "Edit(**)",
+      "Bash(python3:*)"
+    ],
+    "deny": []
+  }
+}

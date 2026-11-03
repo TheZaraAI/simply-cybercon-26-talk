@@ -1,0 +1,11 @@
+vendor,product,version,owner,exposure,business_criticality
+PHP Group,PHP,8.2.12,platform-team,internet-facing,high
+Fortinet,FortiOS,7.4.1,network-team,internet-facing,high
+Microsoft,Windows Server,2022,it-ops,internal,medium
+Atlassian,Confluence,8.5.4,eng-tools,internet-facing,medium
+Cisco,IOS XE,17.9,network-team,internet-facing,high
+VMware,vCenter Server,8.0,infra-team,internal,high
+Apache,Struts,6.3.0,legacy-billing,internet-facing,high
+Ivanti,Connect Secure,22.6,remote-access,internet-facing,high
+Progress,MOVEit Transfer,2023.1,finance-ops,internet-facing,medium
+Oracle,WebLogic Server,14.1.1,legacy-billing,internal,low
