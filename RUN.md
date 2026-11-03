@@ -12,13 +12,19 @@ python3 scripts/run_offline.py data/kev-live.json
 Read the brief it produces. Pick the two lines you will read out loud on the
 `output` slide, and note the token counts for slide 15.
 
-Record the fallback:
+Run the test suite. All 18 checks must pass:
 
 ```bash
-asciinema rec demo-run.cast -c "python3 scripts/run_offline.py data/kev-live.json"
+python3 tests/test_demo.py
 ```
 
-Or screen record it. Have it one click away.
+**The fallback videos are already made**, in `demos/`:
+
+- `Demo_01_The_Overnight_Run.mp4` (52s) — plays at slide 8 or 17 if the live run dies
+- `Demo_02_The_Injection.mp4` (64s) — plays at slides 19 to 21 if the live attack dies
+
+Have both open in a player before you go on. They are cut in the deck's
+visual language, so switching to one does not look like a failure.
 
 ## On stage
 
@@ -58,11 +64,14 @@ It should flag the embedded instruction in the brief and refuse the export.
 
 ## If anything dies
 
-Play the recording and say "and this is why you always have the recording."
-Do not debug in front of 200 people. The deterministic fallback always works:
+Play the video from `demos/` and say "and this is why you always have the
+recording." Do not debug in front of 200 people.
+
+The deterministic fallback also always works, no key and no network:
 
 ```bash
-python3 scripts/run_offline.py
+python3 scripts/run_offline.py                          # clean run
+python3 scripts/run_offline.py data/kev-sample-POISONED.json   # guarded, flags the injection
 ```
 
 ## Reset between rehearsals

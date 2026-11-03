@@ -47,6 +47,17 @@ deny list back.
 | `scripts/run_offline.py` | Deterministic fallback run, no model needed |
 | `kit/` | The five checklists |
 | `RUN.md` | The stage runbook |
+| `tests/test_demo.py` | 18 checks covering every scenario in the talk |
+| `demos/` | The two demo videos, cut in the deck's visual language |
+
+## Verify it does what the talk says
+
+```bash
+python3 tests/test_demo.py
+```
+
+18 checks: the clean run, the agent that stops early, the poisoned feed
+guarded, the poisoned feed obeyed, and stage safety.
 
 ## The kit
 
