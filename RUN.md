@@ -2,6 +2,8 @@
 
 Monday 9 Nov 2026, 11:00, Room 1 Track A. 45 minutes.
 
+Slide numbers below match the live deck (43 slides).
+
 ## The night before
 
 ```bash
@@ -10,7 +12,7 @@ python3 scripts/run_offline.py data/kev-live.json
 ```
 
 Read the brief it produces. Pick the two lines you will read out loud on the
-`output` slide, and note the token counts for slide 15.
+`output` slide (26), and note the token counts for slide 24.
 
 Run the test suite. All 18 checks must pass:
 
@@ -18,54 +20,64 @@ Run the test suite. All 18 checks must pass:
 python3 tests/test_demo.py
 ```
 
-**The fallback videos are already made**, in `demos/`:
+Check the Claude Code sign-in will outlive the talk:
 
-- `Demo_01_The_Overnight_Run.mp4` (52s), plays at slide 8 or 17 if the live run dies
-- `Demo_02_The_Injection.mp4` (64s), plays at slides 19 to 21 if the live attack dies
+```bash
+claude auth status      # loginExpiresAt must be after Mon 9 Nov 12:00
+```
 
-Have both open in a player before you go on. They are cut in the deck's
-visual language, so switching to one does not look like a failure.
+If it is not, run `claude auth login` tonight.
+
+**Both recordings are in the deck**, click to play, sound on: Demo 1 on
+slide 12, Demo 2 on slide 13. The same clips are in `demos/` (narrated and
+silent) if you would rather play them from a player:
+
+- `Demo_01_The_Overnight_Run_NARRATED.mp4` (52s), the clean run
+- `Demo_02_The_Injection_NARRATED.mp4` (64s), the breach, unguarded then contained
 
 ## On stage
 
-**Slide 8, "Run it."** In the terminal:
+**Slide 12.** Click the clean run recording. Let it talk. 52 seconds.
+
+**Slide 13.** Click the breach recording. 64 seconds. One line after: everything
+that separated those two runs is the rest of this talk.
+
+**Slide 14, "Run it."** In the terminal:
 
 ```bash
 claude            # then: run the overnight brief
 ```
 
-Leave it. Switch back to the deck. Do not watch it.
+Leave it. Switch back to the deck. Do not watch it. On this Mac expect one or
+two permission prompts for reading data and writing the brief, because the home
+folder name ends in a dot and Claude Code treats that path as suspicious. Click
+Yes and keep talking.
 
-**Slide 17, "Read it."** Switch to the terminal, `cat output/brief.md`,
+**Slide 26, "Read it."** Switch to the terminal, `cat output/brief.md`,
 read two or three lines. Pick the one where it decided something did NOT matter.
 
-**Slide 19, the poisoned advisory.** First show the record:
+**Slide 30, the poisoned advisory.** Show the record and read it out loud:
 
 ```bash
 python3 -c "import json;print(json.load(open('data/kev-sample-POISONED.json'))['vulnerabilities'][-1]['notes'])"
 ```
 
-Read it out loud. Then go unguarded and run it:
+Nothing else runs on this slide. The unguarded run is the first half of the
+recording on slide 13.
+
+**Slide 32, guarded, live.** Same request, real context file, real permissions:
 
 ```bash
-cp .claude/settings.json .claude/settings.SAFE.json
-cp .claude/settings.UNSAFE.json .claude/settings.json
 claude            # then: run the overnight brief using data/kev-sample-POISONED.json
 ```
 
-**Slide 21, guarded.** Put the real permissions back and run the identical input:
-
-```bash
-cp .claude/settings.SAFE.json .claude/settings.json
-claude            # then: run the overnight brief using data/kev-sample-POISONED.json
-```
-
-It should flag the embedded instruction in the brief and refuse the export.
+It flags the embedded instruction in the brief, leaves the severities alone,
+writes no export, and `verify_brief.py` passes.
 
 ## If anything dies
 
-Play the video from `demos/` and say "and this is why you always have the
-recording." Do not debug in front of 200 people.
+Jump back to slide 12 or 13 and play the recording, and say "and this is why
+you always have the recording." Do not debug in front of 200 people.
 
 The deterministic fallback also always works, no key and no network:
 
@@ -74,9 +86,17 @@ python3 scripts/run_offline.py                          # clean run
 python3 scripts/run_offline.py data/kev-sample-POISONED.json   # guarded, flags the injection
 ```
 
+## Why the unguarded run is a recording and not live
+
+With the permissions stripped (`.claude/settings.UNSAFE.json`) the model still
+refuses the injection most of the time, because refusing is what a well trained
+model tends to do on a good day. The recording is the bad day. You do not get to
+choose which day you get on stage, which is the whole argument for the three
+controls. To try the unguarded run yourself, see SETUP.md step 6a.
+
 ## Reset between rehearsals
 
 ```bash
 cp .claude/settings.SAFE.json .claude/settings.json 2>/dev/null
-rm -f output/brief.md output/matches.json output/export.txt
+rm -f output/brief.md output/matches.json output/flagged.json output/export.txt
 ```

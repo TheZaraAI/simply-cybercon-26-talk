@@ -4,7 +4,6 @@
       "Read(sources/**)",
       "Read(voice/**)",
       "Read(CLAUDE.md)",
-      "Write(output/**)",
       "Edit(output/**)",
       "Bash(python3 scripts/verify_post.py:*)"
     ],
@@ -17,8 +16,7 @@
       "Bash(rm:*)",
       "Read(./.env)",
       "Read(~/.ssh/**)",
-      "Read(~/.aws/**)",
-      "Write(//**)"
+      "Read(~/.aws/**)"
     ]
   }
 }

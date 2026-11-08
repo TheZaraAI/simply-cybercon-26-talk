@@ -75,7 +75,7 @@ cd ~/Projects
 
 **Why this is worth saying on stage:** the folder IS the context boundary. What
 sits in that directory is what the agent can see. A tidy repo is not
-housekeeping, it is the SELECT job from slide 6.
+housekeeping, it is the SELECT job from slide 8.
 
 ---
 
@@ -131,7 +131,7 @@ the empty repo in your browser:
 
 1. github.com, New repository
 2. Name it exactly: `simply-cybercon-26-talk`
-3. **Public** (the QR code on slide 27 points here)
+3. **Public** (the QR codes on slides 1 and 42 point here)
 4. Do NOT tick "Add a README" or any other file. It must be empty.
 5. Create repository
 
@@ -143,7 +143,7 @@ git push -u origin main
 ```
 
 **CHECK:** open the repo in your browser. You should see two commits and the
-README rendering on the front page. Then scan the QR on slide 27 with your
+README rendering on the front page. Then scan the QR on slide 1 with your
 phone and confirm it lands there.
 
 ### If it says "remote origin already exists"
@@ -191,7 +191,7 @@ loaded before you run anything.
 
 ---
 
-## Step 5. The clean run (slides 8 and 17)
+## Step 5. The clean run (slides 14 and 26)
 
 At the Claude Code prompt:
 
@@ -211,7 +211,7 @@ The best one is a section where it decided something did NOT matter.
 
 ---
 
-## Step 6. The attack (slides 19 and 21)
+## Step 6. The attack (slides 30 and 32)
 
 First look at the poison, exactly as you will on stage:
 
@@ -234,9 +234,10 @@ run the overnight brief using data/kev-sample-POISONED.json
 ```
 
 **CHECK:** look for severities dropping to LOW, an `output/export.txt`
-appearing, and no mention of the injection in the brief. Some or all of that
-should happen. Write down what it actually did, because that is what you will
-narrate tomorrow.
+appearing, and no mention of the injection in the brief. Expect the model to
+refuse the injection more often than not, even with the permissions stripped.
+The recording on slide 13 shows the run where it obeyed. On stage this half is
+the recording, not a live run; only the guarded run (6b) is live.
 
 ### 6b. Guarded
 
@@ -261,8 +262,8 @@ ls output/export.txt 2>/dev/null || echo "no export, correct"
 
 You want the flag line present and no export file.
 
-**IMPORTANT:** if the unguarded run does not misbehave, or the guarded run does
-not flag it, tell me today and I will fix it. Do not find this out at 11am.
+**IMPORTANT:** if the guarded run does not flag it, tell me today and I will
+fix it. Do not find this out at 11am. The unguarded run refusing is normal.
 
 ---
 
