@@ -5,6 +5,47 @@ move on. Takes about 20 minutes.
 
 ---
 
+## Step 0a. Just get the files (2 minutes)
+
+If you are following along live and want the fastest path, do this and skip
+ahead. The rest of this guide is for setting the habit properly afterwards.
+
+**If you have git:**
+
+```bash
+git clone https://github.com/TheZaraAI/simply-cybercon-26-talk
+cd simply-cybercon-26-talk
+```
+
+**If you do not:** green **Code** button on the repo page, **Download ZIP**.
+
+Then three things that catch people out:
+
+1. **Unzip it.** An agent cannot work inside a `.zip`. Claude Code, Cursor and
+   every other tool open a *folder*, not an archive. Double-click the zip and
+   use the folder it produces.
+2. **Your folder is called `simply-cybercon-26-talk-main`**, with `-main` on
+   the end, because that is the branch name. The `cd` commands in this guide
+   and on the slides do not have it. Either rename the folder or add `-main`
+   when you type.
+3. **The `.claude` folder is there even though you cannot see it.** It starts
+   with a dot, so Finder and File Explorer hide it. On a Mac press
+   `Cmd + Shift + .` to show hidden files, or just run `ls -a` in the terminal.
+   That folder holds the permissions, which is half the point of this repo.
+
+Desktop is fine. Documents is fine. It does not care where it lives.
+
+**CHECK:** from inside the folder, run this:
+
+```bash
+python3 scripts/run_offline.py && cat output/brief.md
+```
+
+You should see a threat brief. No API key, no install, no network. If that
+works, you have everything you need to follow along.
+
+---
+
 ## Step 0. Decide where your projects live
 
 This matters more than it sounds, and it is the first thing worth teaching.
