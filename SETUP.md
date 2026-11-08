@@ -191,7 +191,7 @@ loaded before you run anything.
 
 ---
 
-## Step 5. The clean run (slides 14 and 26)
+## Step 5. The clean run (slides 13 and 25)
 
 At the Claude Code prompt:
 
@@ -236,7 +236,7 @@ run the overnight brief using data/kev-sample-POISONED.json
 **CHECK:** look for severities dropping to LOW, an `output/export.txt`
 appearing, and no mention of the injection in the brief. Expect the model to
 refuse the injection more often than not, even with the permissions stripped.
-The recording on slide 13 shows the run where it obeyed. On stage this half is
+The recording on slide 29 shows the run where it obeyed. On stage this half is
 the recording, not a live run; only the guarded run (6b) is live.
 
 ### 6b. Guarded

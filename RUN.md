@@ -12,7 +12,7 @@ python3 scripts/run_offline.py data/kev-live.json
 ```
 
 Read the brief it produces. Pick the two lines you will read out loud on the
-`output` slide (26), and note the token counts for slide 24.
+`output` slide (25), and note the token counts for slide 23.
 
 Run the test suite. All 18 checks must pass:
 
@@ -29,7 +29,7 @@ claude auth status      # loginExpiresAt must be after Mon 9 Nov 12:00
 If it is not, run `claude auth login` tonight.
 
 **Both recordings are in the deck**, click to play, sound on: Demo 1 on
-slide 12, Demo 2 on slide 13. The same clips are in `demos/` (narrated and
+slide 12, Demo 2 on slide 29. The same clips are in `demos/` (narrated and
 silent) if you would rather play them from a player:
 
 - `Demo_01_The_Overnight_Run_NARRATED.mp4` (52s), the clean run
@@ -39,10 +39,7 @@ silent) if you would rather play them from a player:
 
 **Slide 12.** Click the clean run recording. Let it talk. 52 seconds.
 
-**Slide 13.** Click the breach recording. 64 seconds. One line after: everything
-that separated those two runs is the rest of this talk.
-
-**Slide 14, "Run it."** In the terminal:
+**Slide 13, "Run it."** In the terminal:
 
 ```bash
 claude            # then: run the overnight brief
@@ -53,8 +50,12 @@ two permission prompts for reading data and writing the brief, because the home
 folder name ends in a dot and Claude Code treats that path as suspicious. Click
 Yes and keep talking.
 
-**Slide 26, "Read it."** Switch to the terminal, `cat output/brief.md`,
+**Slide 25, "Read it."** Switch to the terminal, `cat output/brief.md`,
 read two or three lines. Pick the one where it decided something did NOT matter.
+
+**Slide 29.** Click the breach recording. 64 seconds, split screen: left side
+unguarded, right side contained. One line after: everything that separated
+those two runs is the next three slides.
 
 **Slide 30, the poisoned advisory.** Show the record and read it out loud:
 
@@ -62,8 +63,8 @@ read two or three lines. Pick the one where it decided something did NOT matter.
 python3 -c "import json;print(json.load(open('data/kev-sample-POISONED.json'))['vulnerabilities'][-1]['notes'])"
 ```
 
-Nothing else runs on this slide. The unguarded run is the first half of the
-recording on slide 13.
+Nothing else runs on this slide. The unguarded run is the left side of the
+recording on slide 29.
 
 **Slide 32, guarded, live.** Same request, real context file, real permissions:
 
@@ -76,7 +77,7 @@ writes no export, and `verify_brief.py` passes.
 
 ## If anything dies
 
-Jump back to slide 12 or 13 and play the recording, and say "and this is why
+Jump back to slide 12 or 29 and play the recording, and say "and this is why
 you always have the recording." Do not debug in front of 200 people.
 
 The deterministic fallback also always works, no key and no network:

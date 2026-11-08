@@ -23,7 +23,7 @@ def reset():
         if os.path.exists(p):
             os.remove(p)
 
-print("\n1. CLEAN RUN (slides 14 and 26)")
+print("\n1. CLEAN RUN (slides 13 and 25)")
 reset()
 r = run("scripts/run_offline.py", "data/kev-sample.json")
 check("the loop completes and verification passes", r.returncode == 0)
@@ -32,7 +32,7 @@ check("the brief exists and has sections", brief.count("\n## ") >= 6)
 check("it filters: 6 of 8 advisories matched", "6 of 8" in r.stdout, r.stdout.strip()[:80])
 check("no false positive on isolation", "no embedded instructions" in r.stdout)
 
-print("\n2. NO DEFINITION OF DONE (slide 23, where agents break)")
+print("\n2. NO DEFINITION OF DONE (slide 22, where agents break)")
 reset()
 run("scripts/run_offline.py", "data/kev-sample.json")
 full = open(os.path.join(ROOT, "output/brief.md")).read()
@@ -55,7 +55,7 @@ check("the scanner named the injection", flagged["flagged"] == 1 and flagged["re
 reasons = {h["reason"] for h in flagged["records"][0]["hits"]}
 check("it caught all five injection shapes", len(reasons) >= 5, str(sorted(reasons)))
 
-print("\n4. POISONED FEED, UNGUARDED (slide 13, the recording where the agent obeys)")
+print("\n4. POISONED FEED, UNGUARDED (slide 29, the recording where the agent obeys)")
 reset()
 run("scripts/run_offline.py", "data/kev-sample-POISONED.json")
 brief = open(os.path.join(ROOT, "output/brief.md")).read()
