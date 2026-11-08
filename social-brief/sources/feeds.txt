@@ -1,0 +1,7 @@
+# Sources I actually trust. One URL per line, comments with #.
+# The agent reads only what is pinned to sources/pinned/, never the network.
+# Fetching is a separate, deliberate step you run yourself.
+
+https://www.cisa.gov/known-exploited-vulnerabilities-catalog
+https://www.cisa.gov/news-events/cybersecurity-advisories
+https://nvd.nist.gov/vuln/data-feeds

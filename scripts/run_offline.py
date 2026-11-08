@@ -40,7 +40,7 @@ def main():
         lines += [f"> Advisory {f['cveID']} contained embedded instructions. Flagged, not followed.", ""]
     for m in sorted(matches, key=lambda x: (sev(x) != "CRITICAL", x["cveID"])):
         lines += [
-            f"## {m['cveID']} — {m['product']}",
+            f"## {m['cveID']} {m['product']}",
             f"- Severity: {sev(m)}",
             f"- Action: patch per vendor advisory; owner is {m['owner']}"
             + (f"; CISA due date {m['dueDate']} has passed" if m["overdue"] else f"; CISA due date {m['dueDate']}"),

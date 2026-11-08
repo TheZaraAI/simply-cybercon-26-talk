@@ -20,8 +20,8 @@ python3 tests/test_demo.py
 
 **The fallback videos are already made**, in `demos/`:
 
-- `Demo_01_The_Overnight_Run.mp4` (52s) — plays at slide 8 or 17 if the live run dies
-- `Demo_02_The_Injection.mp4` (64s) — plays at slides 19 to 21 if the live attack dies
+- `Demo_01_The_Overnight_Run.mp4` (52s), plays at slide 8 or 17 if the live run dies
+- `Demo_02_The_Injection.mp4` (64s), plays at slides 19 to 21 if the live attack dies
 
 Have both open in a player before you go on. They are cut in the deck's
 visual language, so switching to one does not look like a failure.

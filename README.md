@@ -6,6 +6,23 @@ Everything from the session: the agent you watched run, the context file, the
 permissions that stopped the attack, the poisoned feed so you can run the
 attack yourself, and five checklists.
 
+## Start here: build your own
+
+The point of this repo is not that you run my agent. It is that you write your
+own context file tonight, for a job you already do.
+
+**`kit/CONTEXT_FILE_TEMPLATE.md`** is the whole talk in one file: a blank
+seven-section template, plus two complete worked examples filled in end to end.
+
+- Example A is the vulnerability-brief agent you watched run.
+- Example B is a daily threat brief written for publishing on social, which is
+  the version to steal if the research is eating your morning. It is also a
+  runnable folder: see `social-brief/`.
+
+Read whichever is closer to your job, steal its shape, and change the Role,
+Output and Voice sections. The other four sections barely change at all, and
+that is the lesson.
+
 ## Run it in two minutes
 
 ```bash
@@ -45,7 +62,8 @@ deny list back.
 | `scripts/match.py` | Match the feed against the inventory |
 | `scripts/verify_brief.py` | The definition of done, as a script |
 | `scripts/run_offline.py` | Deterministic fallback run, no model needed |
-| `kit/` | The five checklists |
+| `kit/` | The five checklists, including the context file template |
+| `social-brief/` | A second runnable agent: the daily threat brief for social |
 | `RUN.md` | The stage runbook |
 | `tests/test_demo.py` | 18 checks covering every scenario in the talk |
 | `demos/` | The two demo videos, cut in the deck's visual language |
@@ -61,16 +79,32 @@ guarded, the poisoned feed obeyed, and stage safety.
 
 ## The kit
 
-- `kit/SECURE_YOUR_AGENT.md` — pre-deployment checklist
-- `kit/AGENT_SCORECARD.md` — eight questions before any agent gets credentials
-- `kit/CONTEXT_FILE_TEMPLATE.md` — fill it in tonight
-- `kit/AGENT_LOOP_TEMPLATE.md` — plan, act, verify, decide
-- `kit/COST_AND_BACKUP.md` — cut the bill, keep the checkpoints
+- `kit/SECURE_YOUR_AGENT.md`: pre-deployment checklist
+- `kit/AGENT_SCORECARD.md`: eight questions before any agent gets credentials
+- `kit/CONTEXT_FILE_TEMPLATE.md`: the blank template plus two worked examples. Start here
+- `kit/AGENT_LOOP_TEMPLATE.md`: plan, act, verify, decide
+- `kit/COST_AND_BACKUP.md`: cut the bill, keep the checkpoints
 
 ## The three controls
 
 1. Its own scoped credential, with an expiry. Never yours, never shared.
 2. A human gate on anything irreversible. In the permissions, not the prompt.
 3. Everything it reads is untrusted, and every tool call is logged.
+
+## A second agent, ready to run
+
+`social-brief/` is the same seven-section file pointed at content you publish
+instead of a task you run. Paste twenty of your own posts into
+`social-brief/voice/my-last-20-posts.md`, drop today's articles into
+`social-brief/sources/pinned/`, and open the folder in Claude Code.
+
+```bash
+python3 social-brief/scripts/verify_post.py
+```
+
+That script is its definition of done. It fails a post for being too long, for
+a statistic with no source, for anything on your banned-words list, and for any
+sign that something tried to publish. Same idea as `verify_brief.py`, different
+job. That is the point.
 
 MIT licensed. Take it, change it, teach it.
