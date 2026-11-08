@@ -2,7 +2,7 @@
 
 Monday 9 Nov 2026, 11:00, Room 1 Track A. 45 minutes.
 
-Slide numbers below match the live deck (43 slides).
+Slide numbers below match the live deck (44 slides).
 
 ## The night before
 
@@ -57,7 +57,10 @@ read two or three lines. Pick the one where it decided something did NOT matter.
 unguarded, right side contained. One line after: everything that separated
 those two runs is the next three slides.
 
-**Slide 30, the poisoned advisory.** Show the record and read it out loud:
+**Slide 30, the two context files.** One click reveals the right panel. Point
+at line 14, then 34 and 41, then 49. Nothing to run.
+
+**Slide 31, the poisoned advisory.** Show the record and read it out loud:
 
 ```bash
 python3 -c "import json;print(json.load(open('data/kev-sample-POISONED.json'))['vulnerabilities'][-1]['notes'])"
@@ -66,7 +69,7 @@ python3 -c "import json;print(json.load(open('data/kev-sample-POISONED.json'))['
 Nothing else runs on this slide. The unguarded run is the left side of the
 recording on slide 29.
 
-**Slide 32, guarded, live.** Same request, real context file, real permissions:
+**Slide 33, guarded, live.** Same request, real context file, real permissions:
 
 ```bash
 claude            # then: run the overnight brief using data/kev-sample-POISONED.json

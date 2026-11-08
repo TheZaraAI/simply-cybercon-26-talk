@@ -131,7 +131,7 @@ the empty repo in your browser:
 
 1. github.com, New repository
 2. Name it exactly: `simply-cybercon-26-talk`
-3. **Public** (the QR codes on slides 1 and 42 point here)
+3. **Public** (the QR codes on slides 1 and 43 point here)
 4. Do NOT tick "Add a README" or any other file. It must be empty.
 5. Create repository
 
@@ -211,7 +211,7 @@ The best one is a section where it decided something did NOT matter.
 
 ---
 
-## Step 6. The attack (slides 30 and 32)
+## Step 6. The attack (slides 31 and 33)
 
 First look at the poison, exactly as you will on stage:
 

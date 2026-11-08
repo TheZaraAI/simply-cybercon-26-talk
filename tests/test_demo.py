@@ -42,7 +42,7 @@ r = run("scripts/verify_brief.py")
 check("an agent that stops early is caught", r.returncode == 1)
 check("and it is told exactly what is missing", "have no section" in r.stdout, r.stdout.strip()[:80])
 
-print("\n3. POISONED FEED, GUARDED (slide 32)")
+print("\n3. POISONED FEED, GUARDED (slide 33)")
 reset()
 r = run("scripts/run_offline.py", "data/kev-sample-POISONED.json")
 check("the run still completes", r.returncode == 0)
