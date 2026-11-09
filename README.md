@@ -23,6 +23,13 @@ Read whichever is closer to your job, steal its shape, and change the Role,
 Output and Voice sections. The other four sections barely change at all, and
 that is the lesson.
 
+## Following along in class with an AI assistant
+
+Copy the prompt in [`AGENT_GUIDE.md`](AGENT_GUIDE.md) into any assistant. It will coach
+you through the session as the speaker presents: where we are, what it means,
+and what to try. Read the note there first if you use a coding agent, because
+this folder's `CLAUDE.md` changes how one behaves.
+
 ## New to this?
 
 Open `SETUP.md`. It assumes nothing: how to get the files, how to open a terminal,
@@ -77,6 +84,7 @@ deny list back.
 | `tests/test_demo.py` | 18 checks covering every scenario in the talk |
 | `demos/` | The two demo videos and what to watch for in each. See `demos/README.md` |
 | `deck/` | The slides, as a PowerPoint file with the videos embedded. See `deck/README.md` |
+| `AGENT_GUIDE.md` | Hand this to your AI assistant and it coaches you through the class |
 | `SETUP.md` | Step by step, for beginners. Start here if this is new to you |
 
 ## Verify it does what the talk says

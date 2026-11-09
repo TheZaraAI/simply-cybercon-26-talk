@@ -16,6 +16,8 @@ minutes. You can stop after Step 3 and already have something working.
 called Terminal. On Windows, open PowerShell. Every grey box below is something
 you type there, then press Enter.
 
+**Want an assistant to coach you through the whole class?** See `AGENT_GUIDE.md`.
+
 **Stuck at any point?** Open the folder in Claude Code or any AI assistant and
 paste this: "I am following SETUP.md in this folder and I am on step N. Explain
 what it wants me to do in plain English and check what I did." It has everything
