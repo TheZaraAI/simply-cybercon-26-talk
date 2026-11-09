@@ -23,6 +23,15 @@ Read whichever is closer to your job, steal its shape, and change the Role,
 Output and Voice sections. The other four sections barely change at all, and
 that is the lesson.
 
+## New to this?
+
+Open `SETUP.md`. It assumes nothing: how to get the files, how to open a terminal,
+what each command does, and a check after every step. If you get stuck, open
+this folder in any AI assistant and ask it to walk you through `SETUP.md`.
+
+The two demo videos are in `demos/`. Watch Demo 1 (the agent working) then Demo 2
+(the same agent under attack) before you run anything.
+
 ## Run it in two minutes
 
 ```bash
@@ -66,7 +75,9 @@ deny list back.
 | `social-brief/` | A second runnable agent: the daily threat brief for social |
 | `RUN.md` | The stage runbook |
 | `tests/test_demo.py` | 18 checks covering every scenario in the talk |
-| `demos/` | The two demo videos, cut in the deck's visual language |
+| `demos/` | The two demo videos and what to watch for in each. See `demos/README.md` |
+| `deck/` | The slides, as a PowerPoint file with the videos embedded. See `deck/README.md` |
+| `SETUP.md` | Step by step, for beginners. Start here if this is new to you |
 
 ## Verify it does what the talk says
 

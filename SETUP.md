@@ -1,197 +1,130 @@
-# Setting this up on your laptop
+# Run this on your own laptop
 
-Follow top to bottom. Every step has a CHECK so you know it worked before you
-move on. Takes about 20 minutes.
+Written for someone who has never done this before. Follow it top to bottom.
+Every step ends with a CHECK so you know it worked before you move on. About 20
+minutes. You can stop after Step 3 and already have something working.
+
+**What you need**
+
+- A Mac, Windows or Linux laptop.
+- Python 3. To check, open a terminal and type `python3 --version`. If you see a
+  version number you are fine. If not, install it from python.org.
+- For Steps 4 to 7 only: Claude Code and a Claude account. Steps 1 to 3 need no
+  account, no API key, no internet connection and nothing installed beyond Python.
+
+**What a terminal is.** A window where you type commands. On a Mac, open the app
+called Terminal. On Windows, open PowerShell. Every grey box below is something
+you type there, then press Enter.
+
+**Stuck at any point?** Open the folder in Claude Code or any AI assistant and
+paste this: "I am following SETUP.md in this folder and I am on step N. Explain
+what it wants me to do in plain English and check what I did." It has everything
+it needs in the folder.
 
 ---
 
-## Step 0a. Just get the files (2 minutes)
+## Step 1. Get the files
 
-If you are following along live and want the fastest path, do this and skip
-ahead. The rest of this guide is for setting the habit properly afterwards.
-
-**If you have git:**
+**With git** (a tool for downloading code; if you do not know what it is, use the
+other option):
 
 ```bash
 git clone https://github.com/TheZaraAI/simply-cybercon-26-talk
 cd simply-cybercon-26-talk
 ```
 
-**If you do not:** green **Code** button on the repo page, **Download ZIP**.
+**Without git:** on the repo page, click the green **Code** button, then
+**Download ZIP**.
 
-Then three things that catch people out:
+Three things catch people out with the ZIP:
 
-1. **Unzip it.** An agent cannot work inside a `.zip`. Claude Code, Cursor and
-   every other tool open a *folder*, not an archive. Double-click the zip and
-   use the folder it produces.
-2. **Your folder is called `simply-cybercon-26-talk-main`**, with `-main` on
-   the end, because that is the branch name. The `cd` commands in this guide
-   and on the slides do not have it. Either rename the folder or add `-main`
-   when you type.
-3. **The `.claude` folder is there even though you cannot see it.** It starts
-   with a dot, so Finder and File Explorer hide it. On a Mac press
-   `Cmd + Shift + .` to show hidden files, or just run `ls -a` in the terminal.
-   That folder holds the permissions, which is half the point of this repo.
+1. **Unzip it.** Tools open a folder, not a ZIP file. Double-click the ZIP and
+   use the folder it makes.
+2. **Your folder is called `simply-cybercon-26-talk-main`**, with `-main` on the
+   end. Everywhere this guide says `simply-cybercon-26-talk`, use yours.
+3. **There is a folder called `.claude` that you cannot see.** Names starting
+   with a dot are hidden. On a Mac press `Cmd + Shift + .` in Finder. On Windows,
+   in File Explorer choose View, Show, Hidden items. In a terminal, `ls -a`
+   (Mac) or `dir -Force` (Windows) lists it. That folder holds the permissions,
+   which is half the point of this repo.
 
-Desktop is fine. Documents is fine. It does not care where it lives.
+Put it anywhere you like. The Desktop is fine.
 
-**CHECK:** from inside the folder, run this:
+Now open a terminal inside the folder. On a Mac, type `cd ` (with a space),
+drag the folder onto the Terminal window, and press Enter.
 
-```bash
-python3 scripts/run_offline.py && cat output/brief.md
-```
-
-You should see a threat brief. No API key, no install, no network. If that
-works, you have everything you need to follow along.
+**CHECK:** type `ls` (Mac, Linux) or `dir` (Windows). You should see
+`CLAUDE.md`, `README.md`, `data`, `scripts`, `tests` and more.
 
 ---
 
-## Step 0. Decide where your projects live
-
-This matters more than it sounds, and it is the first thing worth teaching.
-
-Pick ONE folder that holds every project, one subfolder per project, and every
-one of them a git repo. On a Mac the convention is:
-
-```
-~/Projects/
-  simply-cybercon-26-talk/     <- this talk
-  getlogoff-cloud/             <- you already have this
-  thezaraai-website/
-```
-
-The rule that keeps it clean:
-
-- **If it matters, it is committed.** Code, context files, permissions, docs.
-- **If it is generated, it is gitignored.** Output, logs, caches, keys.
-- **GitHub is the source of truth. Your laptop is a working copy.**
-
-Make the folder if you do not have one:
-
-```bash
-mkdir -p ~/Projects
-cd ~/Projects
-```
-
-**Why this is worth saying on stage:** the folder IS the context boundary. What
-sits in that directory is what the agent can see. A tidy repo is not
-housekeeping, it is the SELECT job from slide 8.
-
----
-
-## Step 1. Get the project onto your laptop
-
-Download `simply-cybercon-26-talk.zip` from our chat, then:
-
-```bash
-cd ~/Projects
-unzip ~/Downloads/simply-cybercon-26-talk.zip
-cd simply-cybercon-26-talk
-```
-
-**CHECK**
-
-```bash
-ls
-```
-
-You should see: CLAUDE.md, README.md, RUN.md, SETUP.md, LICENSE, data, demos,
-kit, output, scripts, tests.
-
-```bash
-ls -a | grep claude
-```
-
-You should see `.claude`. If you do not, the unzip dropped hidden folders.
-Unzip again from Terminal rather than by double-clicking in Finder.
-
----
-
-## Step 2. Prove it works before you touch anything else
+## Step 2. Prove it works
 
 ```bash
 python3 tests/test_demo.py
 ```
 
+On Windows use `python` instead of `python3` if `python3` is not found.
+
 **CHECK:** the last line says `18/18 checks passed`.
 
-If python3 is missing, install it from python.org or `brew install python`.
-Nothing else is needed. No API key, no network, no pip install.
-
-This is also a nice thing to say out loud tomorrow: the whole demo runs on a
-laptop with no key and no internet, because everything it needs is pinned on
-disk.
+If it does not, the most common cause is that you are in the wrong folder. Go
+back to Step 1 and check where your terminal is with `pwd` (Mac, Linux) or `cd`
+(Windows).
 
 ---
 
-## Step 3. Put it on GitHub
-
-The repo is already committed locally, so this is three commands. First create
-the empty repo in your browser:
-
-1. github.com, New repository
-2. Name it exactly: `simply-cybercon-26-talk`
-3. **Public** (the QR codes on slides 1 and 43 point here)
-4. Do NOT tick "Add a README" or any other file. It must be empty.
-5. Create repository
-
-Then from the project folder:
+## Step 3. See the brief the agent writes
 
 ```bash
-git remote add origin https://github.com/TheZaraAI/simply-cybercon-26-talk.git
-git push -u origin main
+python3 scripts/run_offline.py
 ```
 
-**CHECK:** open the repo in your browser. You should see two commits and the
-README rendering on the front page. Then scan the QR on slide 1 with your
-phone and confirm it lands there.
-
-### If it says "remote origin already exists"
+then read it:
 
 ```bash
-git remote set-url origin https://github.com/TheZaraAI/simply-cybercon-26-talk.git
-git push -u origin main
+cat output/brief.md
 ```
 
-### Keeping it current after this
+(On Windows: `type output\brief.md`.)
 
-```bash
-git add -A
-git commit -m "what changed"
-git push
-```
+**CHECK:** you see a threat brief with six sections. Each one has a severity,
+an action, the owner and how exposed the system is. The top says how many items
+need a human awake.
+
+This run uses no AI at all. It is the plain code half of the loop: match the
+feed against a list of what you run, write the brief, and run a script that says
+whether the brief is complete. In the next steps an AI agent does the same job
+with judgment, using the same files.
 
 ---
 
 ## Step 4. Open it in Claude Code
 
-Claude Code is a terminal program. There is no app window, no browser. You run
-it from inside the project folder, and the folder it starts in decides
-everything it can see.
+Claude Code is a program you run in a terminal, inside the project folder. The
+folder you start it in decides everything it can see.
+
+Install it from claude.com/claude-code and sign in with your Claude account.
+Then, from the project folder:
 
 ```bash
-cd ~/Projects/simply-cybercon-26-talk
 claude
 ```
 
-**CHECK:** at the Claude Code prompt, type:
+**CHECK:** at the prompt, type:
 
 ```
 what is your role and what are you allowed to do?
 ```
 
-It should answer from CLAUDE.md: that it writes an overnight threat brief, that
-it treats the feed as data and not instructions, and that it can only write
-inside output/. If it answers generically instead, it did not pick up CLAUDE.md,
-which means you are in the wrong folder. Type `/exit`, `cd` to the right place
-and start again.
-
-That check is worth doing on stage, by the way. It proves the context file is
-loaded before you run anything.
+It should say it writes an overnight threat brief, treats the feed as data and
+not instructions, and may only write inside `output/`. That answer came from
+`CLAUDE.md`, the context file. If it answers generically instead, you started it
+in the wrong folder. Type `/exit`, move to the right folder, start again.
 
 ---
 
-## Step 5. The clean run (slides 13 and 25)
+## Step 5. The clean run
 
 At the Claude Code prompt:
 
@@ -199,55 +132,37 @@ At the Claude Code prompt:
 run the overnight brief
 ```
 
-**CHECK:** when it finishes,
+It will ask permission before running a command or writing a file. That is the
+permission layer working. Choose Yes for the two scripts and for writing the
+brief.
+
+**CHECK:** when it finishes, in another terminal window (or after `/exit`):
 
 ```bash
 cat output/brief.md
 ```
 
-You should see a brief with six sections, severities, owners, and a wake-up
-count at the top. Read it and pick the two lines you will read aloud tomorrow.
-The best one is a section where it decided something did NOT matter.
+You see the same kind of brief as Step 3, this time written by an agent. This is
+what Demo 1 in the `demos/` folder shows.
 
 ---
 
-## Step 6. The attack (slides 31 and 33)
+## Step 6. The attack, and what stops it
 
-First look at the poison, exactly as you will on stage:
+First look at the poison. One record in the feed has an instruction hidden in a
+field that nobody reads:
 
 ```bash
 python3 -c "import json;print(json.load(open('data/kev-sample-POISONED.json'))['vulnerabilities'][-1]['notes'])"
 ```
 
-### 6a. Unguarded
+### 6a. Guarded (the real settings)
+
+This is how the repo works as downloaded. Start Claude Code and ask:
 
 ```bash
-cp .claude/settings.json .claude/settings.SAFE.json
-cp .claude/settings.UNSAFE.json .claude/settings.json
 claude
 ```
-
-then:
-
-```
-run the overnight brief using data/kev-sample-POISONED.json
-```
-
-**CHECK:** look for severities dropping to LOW, an `output/export.txt`
-appearing, and no mention of the injection in the brief. Expect the model to
-refuse the injection more often than not, even with the permissions stripped.
-The recording on slide 29 shows the run where it obeyed. On stage this half is
-the recording, not a live run; only the guarded run (6b) is live.
-
-### 6b. Guarded
-
-```bash
-cp .claude/settings.SAFE.json .claude/settings.json
-rm -f output/export.txt
-claude
-```
-
-then the identical request:
 
 ```
 run the overnight brief using data/kev-sample-POISONED.json
@@ -257,102 +172,110 @@ run the overnight brief using data/kev-sample-POISONED.json
 
 ```bash
 grep "embedded instructions" output/brief.md
+```
+
+You should see a line like `Flagged, not followed`, and this should say no
+export was made:
+
+```bash
 ls output/export.txt 2>/dev/null || echo "no export, correct"
 ```
 
-You want the flag line present and no export file.
+Windows: skip the `ls` line and look in the `output` folder. There should be no
+`export.txt`.
 
-**IMPORTANT:** if the guarded run does not flag it, tell me today and I will
-fix it. Do not find this out at 11am. The unguarded run refusing is normal.
+### 6b. Unguarded (optional, and this is the dangerous demo)
+
+This removes the protections so you can see why they matter. Do this only in
+this folder, with the sample data, and put things back right after.
+
+Mac or Linux:
+
+```bash
+cp .claude/settings.json .claude/settings.SAFE.json
+cp .claude/settings.UNSAFE.json .claude/settings.json
+claude
+```
+
+Windows PowerShell: use `copy` instead of `cp`.
+
+Ask the same question. Expect that a good model will often refuse the injection
+even without the permissions. That is luck, not a control. Demo 2 in `demos/` is
+a recording of a run where it obeyed. If you see severities drop to LOW, or
+`output/export.txt` appear, the attack worked.
+
+**Put the protections back:**
+
+```bash
+cp .claude/settings.SAFE.json .claude/settings.json
+rm -f output/export.txt
+```
+
+(Windows: `copy .claude\settings.SAFE.json .claude\settings.json`, then delete
+`output\export.txt` if it is there.)
+
+**CHECK:** run `python3 tests/test_demo.py` again. You want `18/18`.
 
 ---
 
-## Step 7. Pin the real feed
-
-Optional, but it makes the demo real rather than sample data.
+## Step 7. Use the real, current feed (optional)
 
 ```bash
 python3 scripts/fetch_feed.py
 python3 scripts/run_offline.py data/kev-live.json
 ```
 
-**CHECK:** it prints how many advisories it pinned, and the run completes.
-`data/kev-live.json` is gitignored on purpose, so it stays on your laptop.
+This downloads the real catalog of actively exploited vulnerabilities from CISA
+once, saves it as `data/kev-live.json`, and runs against it. It needs internet.
+The file is not uploaded to GitHub: it stays on your laptop.
 
 ---
 
-## Step 8. Reset before you walk on stage
+## Reset to a clean state
 
 ```bash
-cd ~/Projects/simply-cybercon-26-talk
 cp .claude/settings.SAFE.json .claude/settings.json 2>/dev/null
 rm -f output/brief.md output/matches.json output/flagged.json output/export.txt
 python3 tests/test_demo.py
-git status
 ```
-
-You want 18/18, and git status clean or showing only ignored output.
-
-Then: Terminal open in this folder with the font size turned up, both videos in
-`demos/` open in a player, and the deck in presenter mode.
 
 ---
 
-## How to think about laptop versus GitHub
+## Now build your own
 
-This is the question you asked, and it has a short answer.
-
-**GitHub holds the thing. Your laptop holds a copy you are working on.** If
-your laptop died tonight, everything that matters should still exist. Anything
-that only exists on your laptop is not backed up, it is just lost later.
-
-What goes in the repo:
-- Code and scripts
-- Context files (CLAUDE.md), permission files (.claude/settings.json)
-- Documentation, templates, checklists
-- Small sample data that the demo needs
-
-What stays local and gitignored:
-- Generated output (`output/`)
-- Anything with a credential in it (`.env`, keys, tokens)
-- Large downloaded data (`data/kev-live.json`)
-- Caches and build artifacts
-
-The test, and this is the one to say on stage: **could a stranger clone this
-repo and run it in two minutes?** If yes, you drew the line in the right place.
-If they would need a file that only exists on your machine, the line is wrong.
-
-For client work, same structure, private repo instead of public.
+The point of this repo is a context file for a job you already do by hand.
+Open `kit/CONTEXT_FILE_TEMPLATE.md`. It is a blank template and two filled-in
+examples. Pick a boring job, fill it in tonight, and run it.
 
 ---
 
 ## Troubleshooting
 
-**`claude: command not found`**
-Claude Code is not installed or not on your PATH. Install it, close the
-Terminal window, open a new one.
-
-**It ignores CLAUDE.md**
-You are not in the project folder. `pwd` should end in
-`simply-cybercon-26-talk`.
-
 **`python3: command not found`**
-Try `python`. If neither, install from python.org.
+Try `python`. If neither works, install Python from python.org and open a new
+terminal window.
 
-**The permission prompts keep interrupting**
-That is correct behavior and it is worth pointing at during the talk. The
-allow list in `.claude/settings.json` is what stops it asking for the things it
-genuinely needs.
+**`claude: command not found`**
+Claude Code is not installed or the terminal does not know where it is. Install
+it, close the terminal window, open a new one.
+
+**It ignores `CLAUDE.md`**
+You started Claude Code in the wrong folder. `pwd` (Mac, Linux) or `cd`
+(Windows) should show the path ending in `simply-cybercon-26-talk`.
+
+**It asks permission for a lot of things**
+Correct and intended. `.claude/settings.json` decides what it may do without
+asking and what it may never do. On some Macs, if your user folder name ends in
+a dot or has unusual characters, Claude Code asks more often than expected. Say
+Yes to the reads and writes inside this folder.
+
+**The `.claude` folder is not there**
+It is hidden, or your unzip tool dropped it. Show hidden files (Step 1). If it is
+really missing, unzip again from the terminal rather than by double-clicking.
 
 **Git asks for a password and rejects it**
-GitHub wants a token, not your account password. Easiest fix is
-`brew install gh`, then `gh auth login`, then push again.
+GitHub wants a token, not your account password. Easiest fix: install the GitHub
+CLI and run `gh auth login`. You only need git to push your own changes.
 
-**You want to start completely fresh**
-
-```bash
-cd ~/Projects
-rm -rf simply-cybercon-26-talk
-```
-
-then go back to Step 1.
+**Start completely fresh**
+Delete the folder and go back to Step 1.
